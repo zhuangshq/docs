@@ -1120,7 +1120,7 @@ If you only need the functionality of a custom rule once throughout your applica
             'max:255',
             function($attribute, $value, $fail) {
                 if ($value === 'foo') {
-                    return $fail($attribute.' is invalid.');
+                    $fail($attribute.' is invalid.');
                 }
             },
         ],
