@@ -60,38 +60,38 @@ Laravel使用[Composer](https://getcomposer.org)来管理依赖，所以必须�
 
 #### Local Development Server
 
-If you have PHP installed locally and you would like to use PHP's built-in development server to serve your application, you may use the `serve` Artisan command. This command will start a development server at `http://localhost:8000`:
+如果你在本地安装了PHP环境，那么你可以使用PHP内置的开发服务器来启动你的web应用。具体操作是使用Artisan的`serve`命令来启动PHP内置服务器，地址为：`http://localhost:8000`，在命令行中执行以下命令：
 
     php artisan serve
 
-Of course, more robust local development options are available via [Homestead](/docs/{{version}}/homestead) and [Valet](/docs/{{version}}/valet).
+使用[Homestead](/docs/{{version}}/homestead)和[Valet](/docs/{{version}}/valet)支持更多的开发配置。
 
 <a name="configuration"></a>
-### Configuration
+### 配置
 
-#### Public Directory
+#### Public目录
 
-After installing Laravel, you should configure your web server's document / web root to be the `public` directory. The `index.php` in this directory serves as the front controller for all HTTP requests entering your application.
+安装完Laravel后，将`public`配置为web的根目录。 该目录下的`index.php`将会作为所有HTTP请求的入口文件。
 
-#### Configuration Files
+#### 配置文件
 
-All of the configuration files for the Laravel framework are stored in the `config` directory. Each option is documented, so feel free to look through the files and get familiar with the options available to you.
+Laravel框架中的所有配置文件都放置在`config`目录下，所有的配置都在配置文件中，你应该对这些配置文件有所熟悉，并尽可能掌握你所需要的配置文件。
 
-#### Directory Permissions
+#### 目录权限
 
-After installing Laravel, you may need to configure some permissions. Directories within the `storage` and the `bootstrap/cache` directories should be writable by your web server or Laravel will not run. If you are using the [Homestead](/docs/{{version}}/homestead) virtual machine, these permissions should already be set.
+安装完Laravel后，为了让Laravel正常运作，你可能需要对文件及目录的读写权限进行配置，比如web服务器应该对`storage`目录下的文件和`bootstrap/cache`具有读写权限。假设你使用了[Homestead](/docs/{{version}}/homestead)虚拟机作为开发环境，那你就可以跳过权限配置的步骤了。
 
-#### Application Key
+#### 应用程序密钥
 
-The next thing you should do after installing Laravel is set your application key to a random string. If you installed Laravel via Composer or the Laravel installer, this key has already been set for you by the `php artisan key:generate` command.
+接下来配置应用程序密钥，如果你是通过Composer或者Laravel installer安装Laravel的话，你就可以跳过这个步骤了(安装过程中Laravel已经自动地通过`php artisan key:generate`命令完成了这个操作)。
 
-Typically, this string should be 32 characters long. The key can be set in the `.env` environment file. If you have not renamed the `.env.example` file to `.env`, you should do that now. **If the application key is not set, your user sessions and other encrypted data will not be secure!**
+首先将`.env.example`文件重命名为`.env`，想办法生成一个长度为32的随机字符串，将这个字符串配置到`.env`环境配置文件的应用程序密钥中。 **如果没有设置该密钥，你所有的用户会话和加密数据的安全性都无法保障！**
 
-#### Additional Configuration
+#### 更多配置
 
-Laravel needs almost no other configuration out of the box. You are free to get started developing! However, you may wish to review the `config/app.php` file and its documentation. It contains several options such as `timezone` and `locale` that you may wish to change according to your application.
+除了上面所说的配置以外，其他配置对Laravel来说都不是必须的，你可以直接开始开发项目。但是你可以了解一下`config/app.php`文件及其文档，你可能需要根据你的项目进行一些个性化配置，如`timezone`，`locale`等。
 
-You may also want to configure a few additional components of Laravel, such as:
+更多配置：
 
 <div class="content-list" markdown="1">
 - [Cache](/docs/{{version}}/cache#configuration)
@@ -100,16 +100,16 @@ You may also want to configure a few additional components of Laravel, such as:
 </div>
 
 <a name="web-server-configuration"></a>
-## Web Server Configuration
+## Web服务器配置
 
 <a name="pretty-urls"></a>
-### Pretty URLs
+### 简化URL
 
 #### Apache
 
-Laravel includes a `public/.htaccess` file that is used to provide URLs without the `index.php` front controller in the path. Before serving Laravel with Apache, be sure to enable the `mod_rewrite` module so the `.htaccess` file will be honored by the server.
+Laravel项目中包含了`public/.htaccess`文件，通过修改这个文件的配置，你可以在URL中取出`index.php`。 在Apache环境下，需要修改Apache的配置文件来启用`mod_rewrite`模块，这样的话`.htaccess`文件中的配置才会生效。
 
-If the `.htaccess` file that ships with Laravel does not work with your Apache installation, try this alternative:
+如果Laravel自带的`.htaccess`文件配置后不生效，你可以用以下配置替换配置文件中的内容：
 
     Options +FollowSymLinks -Indexes
     RewriteEngine On
@@ -120,10 +120,10 @@ If the `.htaccess` file that ships with Laravel does not work with your Apache i
 
 #### Nginx
 
-If you are using Nginx, the following directive in your site configuration will direct all requests to the `index.php` front controller:
+如果你使用的是Nginx服务器，那么以下配置将会自动将所有HTTP请求指向你的入口文件`index.php`：
 
     location / {
         try_files $uri $uri/ /index.php?$query_string;
     }
 
-Of course, when using [Homestead](/docs/{{version}}/homestead) or [Valet](/docs/{{version}}/valet), pretty URLs will be automatically configured.
+还是那句话，如果你使用了[Homestead](/docs/{{version}}/homestead)或者[Valet](/docs/{{version}}/valet)，你可以跳过这个步骤。
