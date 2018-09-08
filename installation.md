@@ -1,60 +1,60 @@
-# Installation
+# 安装
 
-- [Installation](#installation)
-    - [Server Requirements](#server-requirements)
-    - [Installing Laravel](#installing-laravel)
-    - [Configuration](#configuration)
-- [Web Server Configuration](#web-server-configuration)
-    - [Pretty URLs](#pretty-urls)
+- [安装](#installation)
+    - [服务器要求](#server-requirements)
+    - [开始安装Laravel](#installing-laravel)
+    - [配置](#configuration)
+- [Web服务器配置](#web-server-configuration)
+    - [简化URL](#pretty-urls)
 
 <a name="installation"></a>
-## Installation
+## 安装
 
-> {video} Laracasts provides a [free, thorough introduction to Laravel](http://laravelfromscratch.com) for newcomers to the framework. It's a great place to start your journey.
+> {video} 从一个视频入手开始了解Laravel是一个非常好的选择，我们(Laracasts)为初学者提供了一个[免费视频](http://laravelfromscratch.com)，你可以通过视频对Laravel有一个大致的了解。
 
 <a name="server-requirements"></a>
-### Server Requirements
+### 服务器要求
 
-The Laravel framework has a few system requirements. Of course, all of these requirements are satisfied by the [Laravel Homestead](/docs/{{version}}/homestead) virtual machine, so it's highly recommended that you use Homestead as your local Laravel development environment.
+Laravel框架对系统有一些要求，如果你选择使用[Laravel Homestead](/docs/5.6/homestead)提供的虚拟机，就可以跳过这些配置内容，所以我们极力推荐你使用Laravel Homestead作为你的本地开发环境。
 
-However, if you are not using Homestead, you will need to make sure your server meets the following requirements:
+如果你没有使用Homestead作为开发环境，那么请确保你的服务器满足这些要求：
 
 <div class="content-list" markdown="1">
 - PHP >= 7.1.3
-- OpenSSL PHP Extension
-- PDO PHP Extension
-- Mbstring PHP Extension
-- Tokenizer PHP Extension
-- XML PHP Extension
-- Ctype PHP Extension
-- JSON PHP Extension
+- OpenSSL PHP扩展
+- PDO PHP扩展
+- Mbstring PHP扩展
+- Tokenizer PHP扩展
+- XML PHP扩展
+- Ctype PHP扩展
+- JSON PHP扩展
 </div>
 
 <a name="installing-laravel"></a>
-### Installing Laravel
+### 开始安装Laravel
 
-Laravel utilizes [Composer](https://getcomposer.org) to manage its dependencies. So, before using Laravel, make sure you have Composer installed on your machine.
+Laravel使用[Composer](https://getcomposer.org)来管理依赖，所以必须安装Composer，才能正常使用Laravel框架。
 
-#### Via Laravel Installer
+#### 通过Laravel Installer安装
 
-First, download the Laravel installer using Composer:
+首先，通过Composer安装Laravel installer：
 
     composer global require "laravel/installer"
 
-Make sure to place composer's system-wide vendor bin directory in your `$PATH` so the laravel executable can be located by your system. This directory exists in different locations based on your operating system; however, some common locations include:
+为了能快捷地使用Composer命令，请确保Composer的`vendor/bin`目录已经添加到你的系统中的`$PATH`变量中， 在不同的操作系统中，这个目录所在的位置也不同，如：
 
 <div class="content-list" markdown="1">
 - macOS: `$HOME/.composer/vendor/bin`
-- GNU / Linux Distributions: `$HOME/.config/composer/vendor/bin`
+- GNU / Linux 发行套件: `$HOME/.config/composer/vendor/bin`
 </div>
 
-Once installed, the `laravel new` command will create a fresh Laravel installation in the directory you specify. For instance, `laravel new blog` will create a directory named `blog` containing a fresh Laravel installation with all of Laravel's dependencies already installed:
+安装完Laravel框架之后，你就可以使用`laravel new`命令在指定位置创建一个Laravel的实例。例如，执行`laravel new blog`命令将会在当前目录下创建一个新的目录`blog`，这个目录将会包含所有在你已经安装的Laravel依赖：
 
     laravel new blog
 
-#### Via Composer Create-Project
+#### 通过Composer Create-Project命令安装
 
-Alternatively, you may also install Laravel by issuing the Composer `create-project` command in your terminal:
+你也可以选择通过Composer的`create-project`命令来安装Laravel，具体步骤是在命令行中执行以下指令：
 
     composer create-project --prefer-dist laravel/laravel blog "5.6.*"
 
